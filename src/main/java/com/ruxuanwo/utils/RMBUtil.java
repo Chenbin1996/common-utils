@@ -1,7 +1,7 @@
 package com.ruxuanwo.utils;
 
 /**
- * 字符串辅助类
+ * 人民币辅助类
  *
  * @author 如漩涡
  */
