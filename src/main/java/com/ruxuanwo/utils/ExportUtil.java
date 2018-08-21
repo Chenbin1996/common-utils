@@ -166,6 +166,7 @@ public class ExportUtil {
                 data = new ArrayList<>();
                 for (int j = 0; j < size; j++) {
                     cell = row.getCell(j);
+                    cell.setCellType(CellType.STRING);
                     if (cell != null) {
                         data.add(cell.getStringCellValue());
                     } else {
