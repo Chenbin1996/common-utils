@@ -1,4 +1,4 @@
-package com.ruxuanwo.sendmsg;
+package com.ruxuanwo.utils;
 
 
 import com.alibaba.fastjson.JSON;
