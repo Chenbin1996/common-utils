@@ -18,6 +18,7 @@ import java.util.Map;
  */
 
 public class HttpClientUtil {
+    private static final String GET = "get";
     /**
      * 默认GET请求模式，不带参数
      *
@@ -60,8 +61,7 @@ public class HttpClientUtil {
      */
     public static String method(String url, Map<String, String> params, String method) {
         if (method != null && !"".equals(method)) {
-            method = method.toUpperCase();
-            if ("GET".equals(method)) {
+            if (method.equalsIgnoreCase(GET)) {
                 return get(url, params);
             } else {
                 return post(url, params);
