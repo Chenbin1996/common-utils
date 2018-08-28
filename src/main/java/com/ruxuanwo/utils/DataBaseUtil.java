@@ -216,7 +216,7 @@ public class DataBaseUtil {
         } catch (SQLException e) {
             new RuntimeException("插入数据失败：[" + e.getMessage() + "]");
         } finally {
-            closeConnection(connection, null, statement);
+            closeConnection(connection, resultSet, statement);
         }
         return object;
     }
