@@ -33,7 +33,7 @@ public class DataBaseUtil {
             data = resultSetToList(resultSet);
             System.out.println("查询成功：[" + data + "]");
         } catch (SQLException e) {
-            new RuntimeException("获取数据库表名失败[" + e.getMessage() + "]");
+            throw new RuntimeException("获取数据库表名失败[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, resultSet, statement);
         }
@@ -62,7 +62,7 @@ public class DataBaseUtil {
             }
             System.out.println("查询成功：[" + columnNames + "]");
         } catch (SQLException e) {
-            new RuntimeException("获取数据库表字段失败[" + e.getMessage() + "]");
+            throw new RuntimeException("获取数据库表字段失败[" + e.getMessage() + "]");
 
         } finally {
             closeConnection(connection, null, statement);
@@ -92,7 +92,7 @@ public class DataBaseUtil {
             }
             System.out.println("查询成功：[" + columnTypes + "]");
         } catch (SQLException e) {
-            new RuntimeException("获取数据库表字段类型失败[" + e.getMessage() + "]");
+            throw new RuntimeException("获取数据库表字段类型失败[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, null, statement);
         }
@@ -118,7 +118,7 @@ public class DataBaseUtil {
             }
             System.out.println("查询成功：[" + columnComments + "]");
         } catch (SQLException e) {
-            new RuntimeException("获取数据库表字段注释失败[" + e.getMessage() + "]");
+            throw new RuntimeException("获取数据库表字段注释失败[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, resultSet, statement);
         }
@@ -214,7 +214,7 @@ public class DataBaseUtil {
             }
             System.out.println("成功插入数据");
         } catch (SQLException e) {
-            new RuntimeException("插入数据失败：[" + e.getMessage() + "]");
+            throw new RuntimeException("插入数据失败：[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, resultSet, statement);
         }
@@ -293,7 +293,7 @@ public class DataBaseUtil {
             connection.createStatement().executeUpdate(sql);
             System.out.println("成功删除数据");
         } catch (Exception e) {
-            new RuntimeException("数据删除失败：[" + e.getMessage() + "]");
+            throw new RuntimeException("数据删除失败：[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, null, statement);
         }
@@ -320,7 +320,7 @@ public class DataBaseUtil {
                 }
             }
         } catch (SQLException e) {
-            new RuntimeException("获取不为空字段失败：[" + e.getMessage() + "]");
+            throw new RuntimeException("获取不为空字段失败：[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, rs, null);
         }
@@ -365,7 +365,7 @@ public class DataBaseUtil {
                 tableConfig.add(map);
             }
         } catch (SQLException e) {
-            new RuntimeException("表主键信息：[" + e.getMessage() + "]");
+            throw new RuntimeException("表主键信息：[" + e.getMessage() + "]");
         } finally {
             closeConnection(connection, rs, statement);
         }
@@ -416,8 +416,7 @@ public class DataBaseUtil {
      */
     private static List<String> resultSetToList(ResultSet rs) throws SQLException {
         if (rs == null) {
-            new RuntimeException("调试" + "转换失败元数据为空");
-            return null;
+            throw new RuntimeException("调试" + "转换失败元数据为空");
         }
         //获取字段数
         int columnCount = rs.getMetaData().getColumnCount();
